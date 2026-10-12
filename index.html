@@ -235,6 +235,18 @@
     .diya .flame, .diya .core, .diya .halo, .diya .embers circle { animation: none; }
   }
 
+
+  /* Stacked scroll: each section slides up over the one before */
+  .stack-base { position: sticky; top: 0; z-index: 0; }
+  .stack { position: sticky; z-index: 1; border-radius: 32px 32px 0 0; box-shadow: 0 -20px 50px rgba(17, 14, 22, 0.22); }
+  .bg-cream { background: var(--cream); }
+  .bg-sand { background: #f5efe5; }
+  .stack-foot { position: relative; z-index: 2; }
+  .hero-inner, .lamp { will-change: opacity; }
+  @media (max-width: 640px) {
+    .stack { border-radius: 22px 22px 0 0; }
+  }
+
   /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -284,7 +296,7 @@
   </div>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero stack-base" id="top">
   <div class="lamp" aria-hidden="true">
     <svg viewBox="0 0 400 560" class="diya">
       <defs>
@@ -344,7 +356,7 @@
   </div>
 </header>
 
-<section>
+<section class="stack bg-cream">
   <div class="wrap story">
     <div class="story-mark reveal">
       <div class="word">Thiri</div>
@@ -360,7 +372,7 @@
   </div>
 </section>
 
-<section style="padding-top:0" id="team">
+<section class="stack bg-sand" id="team">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Who we are</div>
@@ -389,7 +401,7 @@
   </div>
 </section>
 
-<section class="services" id="services">
+<section class="stack bg-cream" id="services">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">What we offer</div>
@@ -444,7 +456,7 @@
   </div>
 </section>
 
-<section id="work">
+<section class="stack bg-sand" id="work">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Selected work</div>
@@ -505,7 +517,6 @@
           <p>A Ganeshotsav site for a housing society. Residents see the 5-day programme, sign up to volunteer and register for events, and the committee manages it all from a Google Sheet. The same code can be reused for any society.</p>
           <div class="links">
             <a class="link" href="https://gulmohar-utsav-2026.teena-anie9.chatgpt.site/" target="_blank" rel="noopener">View site →</a>
-            <a class="link" href="https://github.com/teenaanie/cloud9-ganeshotsav" target="_blank" rel="noopener">GitHub →</a>
           </div>
         </div>
       </article>
@@ -516,7 +527,6 @@
           <p>A college reunion invitation told as a five-chapter scrolling story, with an alumni-only area for registration, the programme and photos. Phone numbers and emails stay private.</p>
           <div class="links">
             <a class="link" href="https://reunion-wine.vercel.app/" target="_blank" rel="noopener">View site →</a>
-            <a class="link" href="https://github.com/teenaanie/reunion" target="_blank" rel="noopener">GitHub →</a>
           </div>
         </div>
       </article>
@@ -532,7 +542,7 @@
   </div>
 </section>
 
-<section style="padding-top:0">
+<section class="stack bg-cream" id="why">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Why Thiri</div>
@@ -563,7 +573,7 @@
   </div>
 </section>
 
-<section class="process" id="process">
+<section class="stack bg-sand" id="process">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">How we work</div>
@@ -578,7 +588,7 @@
   </div>
 </section>
 
-<section class="contact" id="contact">
+<section class="stack contact" id="contact">
   <div class="wrap">
     <div class="eyebrow">Let's talk</div>
     <h2>Have an idea? Let's light it up.</h2>
@@ -599,7 +609,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="stack-foot">
   <div class="wrap">
     <span>© 2026 Thiri. Made by a small family team.</span>
     <a href="rate-card.pdf" class="ratecard-link" target="_blank">View our rate card ↗</a>
@@ -611,6 +621,46 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Stacked scroll: pin each section once its bottom reaches the bottom of the
+  // screen (or its top reaches the nav, if it's short), so the next one slides over it.
+  const nav = document.querySelector('.nav');
+  const stacks = [...document.querySelectorAll('.stack-base, .stack')];
+  function pin() {
+    const navH = nav.offsetHeight;
+    stacks.forEach(el => { el.style.top = Math.min(navH, innerHeight - el.offsetHeight) + 'px'; });
+  }
+  pin();
+  addEventListener('resize', pin);
+  addEventListener('load', pin);
+
+  // Fade the hero text gently as the first section covers it.
+  const hero = document.querySelector('.hero');
+  const heroInner = document.querySelector('.hero-inner');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    addEventListener('scroll', () => {
+      const t = Math.min(1, scrollY / hero.offsetHeight);
+      heroInner.style.opacity = 1 - t * 0.85;
+    }, { passive: true });
+  }
+
+  // Sticky sections confuse the browser's own jump-to-section, so work out
+  // where each section sits in the normal flow and scroll there ourselves.
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      let y = 0;
+      for (const el of document.body.children) {
+        if (el === target) break;
+        if (el.tagName !== 'SCRIPT') y += el.offsetHeight;
+      }
+      const navH = nav.offsetHeight;
+      window.scrollTo({ top: Math.max(0, y - navH), behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
 </script>
 </body>
 </html>
