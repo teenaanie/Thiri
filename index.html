@@ -254,6 +254,17 @@
   .nav-diya .nav-glow { transform-box: fill-box; transform-origin: center; animation: halo 3.2s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) { .nav-diya .nav-flame, .nav-diya .nav-glow { animation: none; } }
 
+
+  /* Back to top */
+  .to-top { position: fixed; right: 22px; bottom: 22px; z-index: 20; display: inline-flex; align-items: center; gap: 6px;
+    background: var(--ink); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600;
+    padding: 11px 16px 11px 13px; border-radius: 999px; box-shadow: 0 8px 24px rgba(17,14,22,.28);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s, transform .3s, background .2s; }
+  .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+  .to-top:hover { background: var(--accent); }
+  .to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 640px) { .to-top { right: 14px; bottom: 14px; padding: 12px; } .to-top span { display: none; } }
+
   /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -546,7 +557,7 @@
         <div class="banner b-reunion"><span class="kind">Community · Reunion</span></div>
         <div class="body">
           <h3>Batch Reunion</h3>
-          <p>A college reunion invitation told as a five-chapter scrolling story, with an alumni-only area for registration, the programme and photos. Phone numbers and emails stay private.</p>
+          <p>A reunion site with two sides. Alumni find their name, register, and see the programme and photos, with their phone numbers and emails kept private. Organisers get an admin area to manage registrations, the guest list and event details. The invitation itself unfolds as a five-chapter scrolling story.</p>
           <div class="links">
             <a class="link" href="https://reunion-wine.vercel.app/" target="_blank" rel="noopener">View site →</a>
           </div>
@@ -556,7 +567,7 @@
         <div class="banner b-artist"><span class="kind">Client · Artist</span></div>
         <div class="body">
           <h3>Sonal's Art Studio</h3>
-          <p>A portfolio site on Wix for a charcoal artist known for animal portraits, with a way for buyers to enquire about commissions.</p>
+          <p>A portfolio site for a charcoal artist known for animal portraits, with a way for buyers to enquire about commissions.</p>
           <div class="links"><a class="link" href="https://teenaanie9.wixsite.com/sonal-artistry" target="_blank" rel="noopener">View site →</a></div>
         </div>
       </article>
@@ -631,6 +642,11 @@
   </div>
 </section>
 
+<a href="#top" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <span>Top</span>
+</a>
+
 <footer class="stack-foot">
   <div class="wrap">
     <span>© 2026 Thiri. Made by a small family team.</span>
@@ -683,6 +699,12 @@
       window.scrollTo({ top: Math.max(0, y - navH), behavior: reduce ? 'auto' : 'smooth' });
     });
   });
+
+  // Show the back-to-top button once the hero has scrolled away.
+  const toTop = document.querySelector('.to-top');
+  const toggleTop = () => toTop.classList.toggle('show', scrollY > innerHeight * 0.8);
+  addEventListener('scroll', toggleTop, { passive: true });
+  toggleTop();
 </script>
 </body>
 </html>
