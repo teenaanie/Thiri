@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiri — Websites & apps built for India</title>
+<meta name="description" content="Thiri is a small design and technology studio building websites, directories and web apps for how India actually uses them.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c4 6 8 9.5 8 15a8 8 0 0 1-16 0c0-4 2.5-6.5 4-9 .8 2.6 2 4 3.5 4.5C15 10 15 6.5 16 3z' fill='%23d9692b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f2a44;
+    --ink-soft: #4a5570;
+    --muted: #7a8296;
+    --line: #e6dfd3;
+    --cream: #fbf7f1;
+    --card: #ffffff;
+    --accent: #d9692b;
+    --accent-deep: #b8531c;
+    --accent-soft: #fbe9dc;
+    --glow: #f2a36f;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.015em; line-height: 1.1; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 48px; }
+  .section-head h2 { font-size: clamp(30px, 4.2vw, 44px); margin-bottom: 14px; }
+  .section-head p { color: var(--ink-soft); font-size: 18px; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 10; background: rgba(31, 42, 68, 0.92); backdrop-filter: blur(10px); color: #fff; }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Fraunces", serif; font-size: 24px; font-weight: 600; }
+  .logo svg { width: 22px; height: 22px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 15px; }
+  .nav-links a { text-decoration: none; color: #c9cfdd; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-links .cta { color: #fff; background: var(--accent); padding: 9px 18px; border-radius: 999px; font-weight: 600; }
+  .nav-links .cta:hover { background: var(--accent-deep); }
+
+  /* Hero */
+  .hero { background: var(--ink); color: #fff; position: relative; overflow: hidden; padding: 120px 0 110px; }
+  .hero::before {
+    content: ""; position: absolute; right: -180px; top: -200px; width: 640px; height: 640px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,105,43,0.5) 0%, rgba(217,105,43,0) 65%);
+    animation: flicker 6s ease-in-out infinite;
+  }
+  @keyframes flicker { 0%,100% { opacity: .85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+  .hero .wrap { position: relative; }
+  .hero h1 { font-size: clamp(42px, 7vw, 80px); max-width: 860px; margin-bottom: 26px; }
+  .hero h1 em { font-style: normal; color: var(--glow); }
+  .hero p.sub { font-size: clamp(17px, 2vw, 20px); color: #c9cfdd; max-width: 620px; margin-bottom: 38px; }
+  .btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 16px; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-deep); }
+  .btn-ghost { border: 1px solid #4b5675; color: #fff; }
+  .btn-ghost:hover { border-color: #c9cfdd; }
+
+  /* Story */
+  .story { display: grid; grid-template-columns: 1fr 1.25fr; gap: 64px; align-items: center; }
+  .story-mark {
+    background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 48px 40px; text-align: center;
+  }
+  .story-mark .word { font-family: "Fraunces", serif; font-size: 64px; font-weight: 600; line-height: 1; }
+  .story-mark .ml { font-size: 30px; color: var(--accent); margin: 10px 0 6px; }
+  .story-mark .meaning { color: var(--muted); font-size: 15px; }
+  .story h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 18px; }
+  .story p { color: var(--ink-soft); margin-bottom: 14px; font-size: 18px; }
+
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .member { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px 28px; }
+  .member.design { border: 1.5px solid var(--accent); }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-family: "Fraunces", serif; font-size: 26px; font-weight: 600; color: #fff; margin-bottom: 18px; }
+  .av-1 { background: var(--ink); }
+  .av-2 { background: #3d7a5e; }
+  .av-3 { background: var(--accent); }
+  .member h3 { font-size: 22px; margin-bottom: 4px; }
+  .member .role { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .member p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 14px; }
+  .member .chips { margin-bottom: 0; }
+
+  /* Services */
+  .services { background: #f5efe5; }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .svc { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px 28px; transition: transform .25s, box-shadow .25s; }
+  .svc:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(31,42,68,0.08); }
+  .svc .num { font-family: "Fraunces", serif; color: var(--accent); font-size: 15px; font-weight: 600; margin-bottom: 14px; }
+  .svc h3 { font-size: 22px; margin-bottom: 8px; }
+  .svc p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 14px; }
+  .svc .for { font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 12px; }
+  .care-band {
+    margin-top: 20px; background: var(--ink); color: #fff; border-radius: 18px; padding: 30px 32px;
+    display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+  .care-band h3 { font-size: 22px; margin-bottom: 4px; }
+  .care-band p { color: #c9cfdd; font-size: 15.5px; max-width: 640px; }
+  .care-band .pill { background: rgba(242,163,111,0.15); color: var(--glow); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+  /* Work */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .work { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .work .banner { height: 150px; position: relative; display: flex; align-items: flex-end; padding: 22px 26px; color: #fff; }
+  .work .banner .kind { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: .9; }
+  .b-pippy { background: linear-gradient(135deg, #f08a4b, #d9692b 60%, #b8531c); }
+  .b-aangan { background: linear-gradient(135deg, #3d7a5e, #2f5f49); }
+  .b-disha { background: linear-gradient(135deg, #3b4f86, #1f2a44); }
+  .b-artist { background: linear-gradient(135deg, #8e5a8a, #5d3a63); }
+  .work .banner .glyph { position: absolute; right: 24px; top: 20px; font-family: "Fraunces", serif; font-size: 72px; font-weight: 700; opacity: .18; line-height: 1; }
+  .work .body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+  .work h3 { font-size: 26px; margin-bottom: 8px; }
+  .work p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .chip { font-size: 12.5px; padding: 4px 12px; border-radius: 999px; background: #f2ece2; color: var(--ink-soft); }
+  .work .link { margin-top: auto; font-weight: 600; font-size: 15px; color: var(--accent); text-decoration: none; }
+  .work .link:hover { text-decoration: underline; }
+  .work .link.muted { color: var(--muted); font-weight: 500; }
+
+  /* Why */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .why h3 { font-size: 20px; margin-bottom: 8px; }
+  .why p { color: var(--ink-soft); font-size: 15.5px; }
+  .why .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); display: grid; place-items: center; margin-bottom: 16px; }
+  .why .icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Process */
+  .process { background: #f5efe5; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; }
+  .step { padding: 0 24px 0 0; position: relative; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+    background: var(--ink); color: #fff; font-family: "Fraunces", serif; font-weight: 600; margin-bottom: 18px; position: relative; z-index: 1;
+  }
+  .step::after { content: ""; position: absolute; top: 20px; left: 40px; right: 0; height: 1px; background: var(--line); }
+  .step:last-child::after { display: none; }
+  .step h3 { font-size: 20px; margin-bottom: 6px; }
+  .step p { color: var(--ink-soft); font-size: 15px; }
+
+  /* Contact */
+  .contact { background: var(--ink); color: #fff; text-align: center; position: relative; overflow: hidden; }
+  .contact::before {
+    content: ""; position: absolute; left: 50%; bottom: -320px; transform: translateX(-50%); width: 700px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,105,43,0.4) 0%, rgba(217,105,43,0) 65%);
+  }
+  .contact .wrap { position: relative; }
+  .contact h2 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 16px; }
+  .contact p { color: #c9cfdd; font-size: 18px; max-width: 560px; margin: 0 auto 34px; }
+  .contact .btns { justify-content: center; }
+  .contact .details { margin-top: 30px; color: #aab2c5; font-size: 15px; }
+
+  footer { background: #18213a; color: #8b94ab; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer a { color: #c9cfdd; text-decoration: none; }
+  footer a:hover { color: #fff; }
+  .ratecard-link { display: inline-flex; align-items: center; gap: 6px; border-bottom: 1px solid #4b5675; padding-bottom: 1px; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero::before { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    section { padding: 72px 0; }
+    .story { grid-template-columns: 1fr; gap: 36px; }
+    .svc-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .step::after { display: none; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    .nav-links a:not(.cta) { display: none; }
+    .hero { padding: 80px 0 72px; }
+    .svc-grid, .work-grid, .why-grid, .steps, .team-grid { grid-template-columns: 1fr; }
+    .story-mark { padding: 36px 24px; }
+    .care-band { padding: 24px; }
+    footer .wrap { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Thiri home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c4 6 8 9.5 8 15a8 8 0 0 1-16 0c0-4 2.5-6.5 4-9 .8 2.6 2 4 3.5 4.5C15 10 15 6.5 16 3z" fill="#d9692b"/></svg>
+      Thiri
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#team">Team</a>
+      <a href="#process">How we work</a>
+      <a href="#contact" class="cta">Let's talk</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">A small design & technology studio</div>
+    <h1>Websites and apps built for <em>how India actually uses them.</em></h1>
+    <p class="sub">We design and build websites, directories and web apps for small businesses, creators and founders. They're mobile-first, WhatsApp-friendly and ready for real users from day one.</p>
+    <div class="btns">
+      <a href="#contact" class="btn btn-primary">Start a project</a>
+      <a href="#work" class="btn btn-ghost">See our work</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap story">
+    <div class="story-mark reveal">
+      <div class="word">Thiri</div>
+      <div class="ml">തിരി</div>
+      <div class="meaning">Malayalam · the wick of a lamp</div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Why "Thiri"</div>
+      <h2>One small flame can light many lamps.</h2>
+      <p>A thiri is the wick at the centre of a lamp. It's simple and easy to overlook, and nothing glows without it.</p>
+      <p>That's how we think about our work. We're a small family team: two sisters building the quiet, dependable technology behind small businesses and new ideas, and a young designer from the next generation who gives it all a face. That frees the people running these businesses to focus on what they do best.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="team">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Who we are</div>
+      <h2>Two sisters and a designer</h2>
+      <p>A small team, so you always talk to the people actually building your product.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member reveal">
+        <div class="avatar av-1">T</div>
+        <h3>Teena</h3>
+        <div class="role">Co-founder · Product & technology</div>
+        <p>Shapes the product, plans what to build, and makes sure it works for real users from day one.</p>
+        <div class="chips"><span class="chip">Product strategy</span><span class="chip">Web apps</span><span class="chip">Platforms</span></div>
+      </div>
+      <div class="member reveal">
+        <div class="avatar av-2">S</div>
+        <h3>[Sister's name]</h3>
+        <div class="role">Co-founder</div>
+        <p>[One line about what your sister leads, for example client relationships, operations or content.]</p>
+        <div class="chips"><span class="chip">[Skill]</span><span class="chip">[Skill]</span></div>
+      </div>
+      <div class="member design reveal">
+        <div class="avatar av-3">T</div>
+        <h3>Tamanna</h3>
+        <div class="role">Design partner · Brand & UI</div>
+        <p>A communication design student who gives every Thiri project its look and feel: colour palettes, logos, mascots and the interfaces people actually touch.</p>
+        <div class="chips"><span class="chip">Brand identity</span><span class="chip">Logos & mascots</span><span class="chip">Colour</span><span class="chip">UI design</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we offer</div>
+      <h2>From a one-page portfolio to a full platform</h2>
+      <p>Start where you are. Every project includes mobile-friendly design, a free discovery call and a walkthrough at launch, so you can run things yourself.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="num">01</div>
+        <h3>Clickable Prototype</h3>
+        <p>Test your idea with real users in about a week, before committing to a full build.</p>
+        <div class="for">For founders with an idea to validate</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">02</div>
+        <h3>Starter Website</h3>
+        <p>A clean 1–3 page site with a WhatsApp button, enquiry form and Google Business setup.</p>
+        <div class="for">For artists, freelancers, tutors and home businesses</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">03</div>
+        <h3>Business Website</h3>
+        <p>A custom-designed 5–8 page site with your branding, service pages, SEO and analytics.</p>
+        <div class="for">For clinics, shops, studios and service businesses</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">04</div>
+        <h3>Directory & Listing Platform</h3>
+        <p>Searchable listings with filters, profile pages and an admin panel to manage everything.</p>
+        <div class="for">For marketplaces and local directories</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">05</div>
+        <h3>Community Web App</h3>
+        <p>Logins and separate views for customers, providers and admins, with onboarding and a lead inbox.</p>
+        <div class="for">For neighbourhood and community platforms</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">06</div>
+        <h3>Two-Sided Platform</h3>
+        <p>Onboarding for two user groups, with matching, applications, dashboards and notifications.</p>
+        <div class="for">For hiring, booking and matching platforms</div>
+      </div>
+    </div>
+    <div class="care-band reveal">
+      <div>
+        <h3>And we stay with you after launch</h3>
+        <p>Simple yearly care plans cover hosting checks, backups, security updates and regular edits. Every new build comes with 3 months of care free.</p>
+      </div>
+      <span class="pill">Add-ons: branding · payments · regional languages · AI</span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>What we've built</h2>
+      <p>Our own products and client work, from a one-page portfolio to full platforms.</p>
+    </div>
+    <div class="work-grid">
+      <article class="work reveal">
+        <div class="banner b-pippy"><span class="glyph">P</span><span class="kind">Our product · Pet care</span></div>
+        <div class="body">
+          <h3>Pippy Pets</h3>
+          <p>A mobile-first pet-care app with a directory of vets, groomers and pet services. An AI check keeps every provider correctly categorised, and owners get reminders by email.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Supabase</span><span class="chip">AI verification</span><span class="chip">Email reminders</span></div>
+          <a class="link" href="https://pippypets.com" target="_blank" rel="noopener">Visit pippypets.com →</a>
+        </div>
+      </article>
+      <article class="work reveal">
+        <div class="banner b-aangan"><span class="glyph">A</span><span class="kind">Our product · Neighbourhood</span></div>
+        <div class="body">
+          <h3>Apna Aangan</h3>
+          <p>A neighbourhood marketplace where local providers list their services and residents find them. It has separate views for residents, providers and admins, and keeps phone numbers private at the database level.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">Role-based access</span><span class="chip">QR + share links</span><span class="chip">Brand system</span></div>
+          <a class="link" href="https://apnaaangan.com" target="_blank" rel="noopener">Visit apnaaangan.com →</a>
+        </div>
+      </article>
+      <article class="work reveal">
+        <div class="banner b-disha"><span class="glyph">N</span><span class="kind">Platform · Hiring</span></div>
+        <div class="body">
+          <h3>Nayi Disha</h3>
+          <p>A WhatsApp-first hiring platform that connects frontline workers in retail and banking with employers. It includes QR-code partner referrals and onboarding flows for both applicants and employers.</p>
+          <div class="chips"><span class="chip">WhatsApp-first</span><span class="chip">Applicant + employer flows</span><span class="chip">Referral payouts</span></div>
+          <span class="link muted">Demo available on request</span>
+        </div>
+      </article>
+      <article class="work reveal">
+        <div class="banner b-artist"><span class="glyph">✦</span><span class="kind">Starter website · Portfolio</span></div>
+        <div class="body">
+          <h3>Artist portfolio</h3>
+          <p>A clean portfolio site on Wix for a working artist to show their work and take enquiries. It was quick to launch and the artist can update it themselves.</p>
+          <div class="chips"><span class="chip">Wix</span><span class="chip">Portfolio</span><span class="chip">Enquiry form</span></div>
+          <span class="link muted">Link coming soon</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Thiri</div>
+      <h2>Designed for real Indian users</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h3>Mobile-first</h3>
+        <p>Most of your customers will only ever see your site on a phone, so we design for that first.</p>
+      </div>
+      <div class="why reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg></div>
+        <h3>WhatsApp-native</h3>
+        <p>Click-to-chat, shareable links and QR codes are built in, because that's how word spreads here.</p>
+      </div>
+      <div class="why reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c-1 4-4 7-7 8"/><path d="M13 21l4-10 4 10M14.5 17h5"/></svg></div>
+        <h3>Your language</h3>
+        <p>Hindi and regional-language versions, so your site speaks to everyone you serve.</p>
+      </div>
+      <div class="why reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z"/></svg></div>
+        <h3>Prototype first</h3>
+        <p>Test your idea with real people before you spend big. Then build what actually works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How we work</div>
+      <h2>Four simple steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Discover</h3><p>A free 30-minute call to understand your business, your users and what success looks like.</p></div>
+      <div class="step reveal"><h3>Design</h3><p>We sketch the key screens and share a clickable preview, so you can see it before we build it.</p></div>
+      <div class="step reveal"><h3>Build</h3><p>We build it with regular check-ins. You get two rounds of revisions at every stage.</p></div>
+      <div class="step reveal"><h3>Launch & care</h3><p>We go live, walk you through it, and look after it with a yearly care plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Let's talk</div>
+    <h2>Have an idea? Let's light it up.</h2>
+    <p>Book a free 30-minute call. We'll suggest the right approach for your business, with no obligation.</p>
+    <div class="btns">
+      <a href="https://wa.me/91XXXXXXXXXX" class="btn btn-primary">Message us on WhatsApp</a>
+      <a href="mailto:hello@thiri.in" class="btn btn-ghost">hello@thiri.in</a>
+    </div>
+    <div class="details">Based in India · Working with clients everywhere</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Thiri. Made by a small family team.</span>
+    <a href="rate-card.pdf" class="ratecard-link" target="_blank">View our rate card ↗</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

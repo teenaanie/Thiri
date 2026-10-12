@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rate Card 2026–27</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1f2a44;
+    --ink-soft: #4a5570;
+    --muted: #7a8296;
+    --line: #e6dfd3;
+    --cream: #fbf7f1;
+    --card: #ffffff;
+    --accent: #d9692b;
+    --accent-soft: #fbe9dc;
+    --green: #2f7d5b;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    font-size: 10pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 15mm 17mm 14mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    background: var(--cream);
+  }
+  .page:last-child { page-break-after: auto; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -0.01em; }
+  h2 { font-size: 21pt; margin-bottom: 2mm; }
+  .eyebrow {
+    font-size: 7.5pt; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 2mm;
+  }
+  .lede { color: var(--ink-soft); font-size: 10.5pt; max-width: 150mm; margin-bottom: 7mm; }
+  .footer {
+    position: absolute; left: 17mm; right: 17mm; bottom: 9mm;
+    display: flex; justify-content: space-between;
+    font-size: 7.5pt; color: var(--muted);
+    border-top: 1px solid var(--line); padding-top: 2.5mm;
+  }
+
+  /* Cover */
+  .cover { background: var(--ink); color: #fff; }
+  .cover .brand { font-family: "Fraunces", serif; font-size: 14pt; font-weight: 600; letter-spacing: 0.02em; }
+  .cover .brand span { color: var(--accent); }
+  .cover h1 { font-size: 46pt; line-height: 1.02; margin: 58mm 0 6mm; font-weight: 600; }
+  .cover h1 em { font-style: normal; color: #f2a36f; }
+  .cover .sub { font-size: 12pt; color: #c9cfdd; max-width: 135mm; }
+  .cover .year {
+    display: inline-block; margin-top: 10mm; padding: 2mm 4mm;
+    border: 1px solid #4b5675; border-radius: 20mm; font-size: 8.5pt; color: #c9cfdd;
+  }
+  .cover .glow {
+    position: absolute; right: -40mm; top: -30mm; width: 150mm; height: 150mm; border-radius: 50%;
+    background: radial-gradient(circle, rgba(217,105,43,0.55) 0%, rgba(217,105,43,0) 65%);
+  }
+  .cover .pillars {
+    position: absolute; left: 17mm; right: 17mm; bottom: 26mm;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm;
+  }
+  .cover .pillar { border-top: 1px solid #4b5675; padding-top: 3mm; }
+  .cover .pillar b { display: block; font-size: 10pt; margin-bottom: 1mm; color: #fff; }
+  .cover .pillar span { font-size: 8.5pt; color: #aab2c5; }
+  .cover .footer { border-top-color: #3a4462; color: #8b94ab; }
+
+  /* Packages */
+  .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .pkg {
+    background: var(--card); border: 1px solid var(--line); border-radius: 3.5mm;
+    padding: 4mm 4.5mm 3.5mm; display: flex; flex-direction: column;
+  }
+  .pkg.featured { border: 1.5px solid var(--accent); }
+  .pkg .tag {
+    align-self: flex-start; font-size: 6.8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--accent-soft); color: var(--accent); padding: 0.8mm 2.2mm; border-radius: 10mm; margin-bottom: 2.5mm;
+  }
+  .pkg h3 { font-size: 13.5pt; margin-bottom: 1mm; }
+  .pkg .for { font-size: 8.2pt; color: var(--muted); margin-bottom: 2mm; }
+  .price { font-family: "Fraunces", serif; font-size: 18pt; font-weight: 600; color: var(--ink); line-height: 1.1; }
+  .price small { font-family: "DM Sans", sans-serif; font-size: 7.5pt; font-weight: 500; color: var(--muted); display: block; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.5mm; }
+  .meta { font-size: 8pt; color: var(--ink-soft); margin: 1mm 0 2mm; }
+  .pkg ul { list-style: none; font-size: 8.6pt; color: var(--ink-soft); }
+  .pkg li { padding-left: 4mm; position: relative; margin-bottom: 0.6mm; }
+  .pkg li::before { content: ""; position: absolute; left: 0; top: 1.7mm; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--accent); }
+  .pkg .eg { margin-top: auto; padding-top: 2mm; font-size: 7.8pt; color: var(--muted); border-top: 1px dashed var(--line); }
+  .pkg .eg b { color: var(--ink); font-weight: 600; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 3mm; overflow: hidden; border: 1px solid var(--line); }
+  th { text-align: left; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 2.6mm 4mm; background: #f5efe5; }
+  td { padding: 2.2mm 3.5mm; border-top: 1px solid var(--line); font-size: 9pt; vertical-align: top; }
+  td.amt { white-space: nowrap; font-weight: 600; text-align: right; }
+  th.amt { text-align: right; }
+  td .note { display: block; font-size: 7.8pt; color: var(--muted); }
+
+  /* Care plans */
+  .care-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-bottom: 4mm; }
+  .care { background: var(--card); border: 1px solid var(--line); border-radius: 3.5mm; padding: 5mm 4.5mm; }
+  .care.featured { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .care.featured .for, .care.featured li, .care.featured .permo { color: #c9cfdd; }
+  .care.featured .price { color: #fff; }
+  .care h3 { font-size: 12.5pt; margin-bottom: 0.5mm; }
+  .care .for { font-size: 8pt; color: var(--muted); margin-bottom: 3mm; min-height: 7mm; }
+  .care .permo { font-size: 8pt; color: var(--green); font-weight: 600; margin: 1mm 0 3mm; }
+  .care.featured .permo { color: #8fd3b0; }
+  .care ul { list-style: none; font-size: 8.3pt; color: var(--ink-soft); }
+  .care li { padding-left: 4mm; position: relative; margin-bottom: 1.1mm; }
+  .care li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .callout {
+    background: var(--accent-soft); border-radius: 3mm; padding: 3.5mm 5mm; font-size: 8.8pt; color: var(--ink);
+  }
+  .callout b { color: var(--accent); }
+
+  /* Work */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-bottom: 6mm; }
+  .work { background: var(--card); border: 1px solid var(--line); border-radius: 3.5mm; padding: 4.5mm 5mm; }
+  .work .kind { font-size: 6.8pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .work h3 { font-size: 12.5pt; margin: 0.8mm 0 1.5mm; }
+  .work p { font-size: 8.5pt; color: var(--ink-soft); margin-bottom: 2mm; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .chip { font-size: 7pt; padding: 0.6mm 2mm; border-radius: 10mm; background: #f2ece2; color: var(--ink-soft); }
+
+  .terms { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm 7mm; font-size: 8.4pt; color: var(--ink-soft); margin-bottom: 6mm; }
+  .terms b { color: var(--ink); display: block; font-size: 8.8pt; }
+  .contact {
+    background: var(--ink); color: #fff; border-radius: 4mm; padding: 6mm 7mm;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .contact h3 { font-size: 15pt; }
+  .contact p { font-size: 8.8pt; color: #c9cfdd; }
+  .contact .details { text-align: right; font-size: 9pt; line-height: 1.7; }
+  .contact .details b { color: #f2a36f; }
+  .section-gap { height: 6mm; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<section class="page cover">
+  <div class="glow"></div>
+  <div class="brand">Thiri<span>.</span></div>
+  <h1>Websites & apps<br>built for <em>how India<br>actually uses them.</em></h1>
+  <p class="sub">Design-led websites, directories and web apps for small businesses, creators and founders. WhatsApp-first, mobile-first, and ready for real users from day one.</p>
+  <div class="year">Rate Card · 2026–27</div>
+  <div class="pillars">
+    <div class="pillar"><b>Mobile-first, always</b><span>Most of your customers will only ever see your site on a phone. We design for that first.</span></div>
+    <div class="pillar"><b>WhatsApp-native</b><span>Click-to-chat, shareable links and QR codes, built in from the start.</span></div>
+    <div class="pillar"><b>Prototype before you pay big</b><span>Test your idea with real users before committing to a full build.</span></div>
+  </div>
+  <div class="footer"><span>Rate Card 2026–27</span><span>hello@thiri.in · +91 XXXXX XXXXX</span></div>
+</section>
+
+<!-- PAGE 2: PACKAGES -->
+<section class="page">
+  <div class="eyebrow">Packages</div>
+  <h2>Pick where you're starting</h2>
+  <p class="lede" style="margin-bottom:5mm">Every package includes mobile-friendly design, a free 30-minute discovery call, two rounds of revisions per stage, and a launch walkthrough.</p>
+
+  <div class="pkg-grid">
+    <div class="pkg">
+      <span class="tag">Validate an idea</span>
+      <h3>Clickable Prototype</h3>
+      <div class="for">For founders who want to test an idea with real users before building it.</div>
+      <div class="price"><small>Starting at</small>₹15,000</div>
+      <div class="meta">About 1 week</div>
+      <ul>
+        <li>Clickable, shareable demo that works on a phone</li>
+        <li>Key screens and user journeys</li>
+        <li>Feedback questions and a WhatsApp message kit for testing</li>
+      </ul>
+      <div class="eg">Like our <b>Society Entrepreneur</b> directory prototype</div>
+    </div>
+
+    <div class="pkg">
+      <span class="tag">Get online</span>
+      <h3>Starter Website</h3>
+      <div class="for">For artists, freelancers, tutors and home businesses.</div>
+      <div class="price"><small>Starting at</small>₹12,000</div>
+      <div class="meta">1–3 pages · 5–7 days · Wix, Framer or custom</div>
+      <ul>
+        <li>Portfolio, about and contact pages</li>
+        <li>WhatsApp button and enquiry form</li>
+        <li>Basic SEO and Google Business Profile setup</li>
+      </ul>
+      <div class="eg">Like our <b>artist portfolio</b> site on Wix</div>
+    </div>
+
+    <div class="pkg">
+      <span class="tag">Grow</span>
+      <h3>Business Website</h3>
+      <div class="for">For clinics, shops, studios and service businesses.</div>
+      <div class="price"><small>Starting at</small>₹35,000</div>
+      <div class="meta">5–8 pages · 2–3 weeks · custom design</div>
+      <ul>
+        <li>Custom design matched to your brand</li>
+        <li>Service pages, gallery, enquiry forms, Google Maps</li>
+        <li>SEO setup, analytics and speed optimisation</li>
+      </ul>
+      <div class="eg">Ideal next step after a Starter site</div>
+    </div>
+
+    <div class="pkg featured">
+      <span class="tag">Most requested</span>
+      <h3>Directory & Listing Platform</h3>
+      <div class="for">For marketplaces, local directories and listing businesses.</div>
+      <div class="price"><small>Starting at</small>₹80,000</div>
+      <div class="meta">4–6 weeks · database-backed</div>
+      <ul>
+        <li>Searchable listings with filters and profile pages</li>
+        <li>Admin panel to add, approve and edit listings</li>
+        <li>Custom domain, professional email and secure database</li>
+      </ul>
+      <div class="eg">Like <b>Pippy Pets</b>, our pet-care directory</div>
+    </div>
+
+    <div class="pkg">
+      <span class="tag">Build a community</span>
+      <h3>Community Web App</h3>
+      <div class="for">For platforms with logins and different kinds of users.</div>
+      <div class="price"><small>Starting at</small>₹1,50,000</div>
+      <div class="meta">6–10 weeks · custom quote after discovery call</div>
+      <ul>
+        <li>Separate views for customers, providers and admins</li>
+        <li>Sign-up, onboarding, enquiries and lead inbox</li>
+        <li>Full brand system, QR and share links</li>
+      </ul>
+      <div class="eg">Like <b>Apna Aangan</b>, our neighbourhood marketplace</div>
+    </div>
+
+    <div class="pkg">
+      <span class="tag">Scale</span>
+      <h3>Two-Sided Platform</h3>
+      <div class="for">For hiring, booking or matching platforms with two user groups.</div>
+      <div class="price"><small>Starting at</small>₹3,00,000</div>
+      <div class="meta">8–14 weeks · custom quote after discovery call</div>
+      <ul>
+        <li>Onboarding journeys for both sides</li>
+        <li>Matching, applications and status tracking</li>
+        <li>Dashboards, notifications and referral flows</li>
+      </ul>
+      <div class="eg">Like <b>Nayi Disha</b>, our frontline hiring platform</div>
+    </div>
+  </div>
+
+  <div class="footer"><span>All prices exclude GST and third-party running costs</span><span>2</span></div>
+</section>
+
+<!-- PAGE 3: ADD-ONS + CARE PLANS -->
+<section class="page">
+  <div class="eyebrow">Add-ons</div>
+  <h2>Add what you need</h2>
+  <p class="lede" style="margin-bottom:5mm">Add these to any package, at the start or later on.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;align-items:start">
+    <table>
+    <tr><th>Add-on</th><th class="amt">From</th></tr>
+      <tr><td>Logo and brand guidelines<span class="note">Logo, colours, fonts and tone of voice</span></td><td class="amt">₹15,000</td></tr>
+      <tr><td>Hindi or regional language version<span class="note">Per language</span></td><td class="amt">₹10,000</td></tr>
+      <tr><td>Online payments<span class="note">Razorpay, Cashfree or UPI checkout</span></td><td class="amt">₹10,000</td></tr>
+      <tr><td>Booking or appointment system</td><td class="amt">₹15,000</td></tr>
+      <tr><td>Admin dashboard</td><td class="amt">₹25,000</td></tr>
+      <tr><td>AI features<span class="note">Smart search, chat assistant, automatic tagging of listings</span></td><td class="amt">₹25,000</td></tr>
+    </table>
+    <table>
+    <tr><th>Add-on</th><th class="amt">From</th></tr>
+      <tr><td>WhatsApp integration<span class="note">Click-to-chat, order and enquiry alerts</span></td><td class="amt">₹5,000</td></tr>
+      <tr><td>SEO setup<span class="note">Keywords, metadata, Google Search Console</span></td><td class="amt">₹8,000</td></tr>
+      <tr><td>Copywriting</td><td class="amt">₹1,500 / page</td></tr>
+      <tr><td>Extra page</td><td class="amt">₹2,500 / page</td></tr>
+      <tr><td>Domain and professional email setup</td><td class="amt">₹3,000</td></tr>
+    </table>
+  </div>
+
+  <div class="section-gap"></div>
+  <div class="eyebrow">Yearly care plans</div>
+  <h2 style="font-size:18pt">Keep it running, without the worry</h2>
+  <p class="lede" style="margin-bottom:4.5mm">One simple yearly fee. Every new build comes with <b>3 months of care free</b>.</p>
+
+  <div class="care-grid">
+    <div class="care">
+      <h3>Essential Care</h3>
+      <div class="for">For Starter websites</div>
+      <div class="price">₹9,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">Works out to ₹833 a month</div>
+      <ul>
+        <li>Hosting and uptime monitoring</li>
+        <li>Monthly backups</li>
+        <li>Security and SSL checks</li>
+        <li>Up to 12 small edits a year</li>
+        <li>Domain renewal reminders</li>
+      </ul>
+    </div>
+    <div class="care featured">
+      <h3>Business Care</h3>
+      <div class="for">For Business websites</div>
+      <div class="price">₹19,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">Works out to ₹1,667 a month</div>
+      <ul>
+        <li>Everything in Essential</li>
+        <li>Up to 30 edits a year</li>
+        <li>Quarterly SEO and speed check</li>
+        <li>Quarterly analytics report</li>
+        <li>Replies within 48 hours</li>
+      </ul>
+    </div>
+    <div class="care">
+      <h3>Platform Care</h3>
+      <div class="for">For directories and web apps</div>
+      <div class="price">₹49,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">Works out to ₹4,167 a month</div>
+      <ul>
+        <li>Database backups and monitoring</li>
+        <li>Bug fixes and security updates</li>
+        <li>3 hours of changes every month</li>
+        <li>Replies within 24 hours</li>
+        <li>Quarterly product review call</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">Need more than that? Extra work is charged at <b>₹1,200 an hour</b>. For ongoing feature development, ask about a <b>Product Partner</b> retainer.</div>
+
+  <div class="footer"><span>All prices exclude GST and third-party running costs</span><span>3</span></div>
+</section>
+
+<!-- PAGE 4: WORK + TERMS -->
+<section class="page">
+  <div class="eyebrow">Selected work</div>
+  <h2>What we've built</h2>
+  <p class="lede" style="margin-bottom:5mm">Our own products and client work, from one-page portfolios to full platforms.</p>
+
+  <div class="work-grid">
+    <div class="work">
+      <div class="kind">Our product · Directory platform</div>
+      <h3>Pippy Pets</h3>
+      <p>A mobile-first pet-care app and directory of vets, groomers and pet services, with an AI check that keeps every provider correctly categorised.</p>
+      <div class="chips"><span class="chip">React</span><span class="chip">Supabase</span><span class="chip">AI verification</span><span class="chip">Custom domain + email</span></div>
+    </div>
+    <div class="work">
+      <div class="kind">Our product · Community web app</div>
+      <h3>Apna Aangan</h3>
+      <p>A neighbourhood marketplace where local providers list their services and residents find them. Separate views for residents, providers and admins, with privacy built into the database.</p>
+      <div class="chips"><span class="chip">Next.js</span><span class="chip">Role-based access</span><span class="chip">QR + share links</span><span class="chip">Brand system</span></div>
+    </div>
+    <div class="work">
+      <div class="kind">Two-sided platform</div>
+      <h3>Nayi Disha</h3>
+      <p>A WhatsApp-first hiring platform that connects frontline workers in retail and banking with employers, including QR-code partner referrals.</p>
+      <div class="chips"><span class="chip">WhatsApp-first</span><span class="chip">Employer + applicant flows</span><span class="chip">Referral payouts</span></div>
+    </div>
+    <div class="work">
+      <div class="kind">Starter website</div>
+      <h3>Artist portfolio</h3>
+      <p>A clean portfolio site on Wix for a working artist to show their work and take enquiries, quick to launch and easy for the artist to update.</p>
+      <div class="chips"><span class="chip">Wix</span><span class="chip">Portfolio</span><span class="chip">Enquiry form</span></div>
+    </div>
+  </div>
+
+  <div class="eyebrow">How we work</div>
+  <div class="terms">
+    <div><b>Payment</b>50% to start, 30% on design approval, 20% before launch. Larger platforms are billed by milestone.</div>
+    <div><b>Revisions</b>Two rounds per stage included. Further changes are billed at ₹1,200 an hour.</div>
+    <div><b>Running costs</b>Domain, hosting, database and app-store fees are paid by you, at actual cost. We'll help you set them up.</div>
+    <div><b>Ownership</b>You own your website, code and content once the final payment is made.</div>
+    <div><b>GST</b>Prices exclude GST, which is added as applicable.</div>
+    <div><b>Quotes</b>Valid for 30 days. Final pricing is confirmed after the discovery call.</div>
+  </div>
+
+  <div class="contact">
+    <div>
+      <h3>Let's talk about your idea</h3>
+      <p>Book a free 30-minute call. We'll suggest the right package, with no obligation.</p>
+    </div>
+    <div class="details">
+      <b>hello@thiri.in</b><br>
+      +91 XXXXX XXXXX (WhatsApp)<br>
+      thiri.in
+    </div>
+  </div>
+
+  <div class="footer"><span>Thiri · Rate Card 2026–27</span><span>4</span></div>
+</section>
+
+</body>
+</html>
