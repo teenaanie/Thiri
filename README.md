@@ -16,5 +16,3 @@ Website and rate card for Thiri, a small family design and technology studio.
 
 ## Still to fill in
 
-- Contact email and WhatsApp number (currently placeholders)
-- Artist portfolio link

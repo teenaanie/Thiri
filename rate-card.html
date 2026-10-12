@@ -138,6 +138,13 @@
   .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; }
   .chip { font-size: 7pt; padding: 0.6mm 2mm; border-radius: 10mm; background: #f2ece2; color: var(--ink-soft); }
 
+  .work-grid.three { grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-bottom: 5mm; }
+  .work-grid.three .work { padding: 3.2mm 4mm; }
+  .work-grid.three .work.span2 { grid-column: span 2; }
+  .work-grid.three h3 { font-size: 11pt; margin: 0.5mm 0 1mm; }
+  .work-grid.three p { font-size: 8pt; margin-bottom: 1.5mm; }
+  .contact .details.two { display: flex; gap: 7mm; text-align: left; font-size: 8.6pt; }
+  .contact > div:first-child { max-width: 70mm; }
   .terms { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm 7mm; font-size: 8.4pt; color: var(--ink-soft); margin-bottom: 6mm; }
   .terms b { color: var(--ink); display: block; font-size: 8.8pt; }
   .contact {
@@ -165,7 +172,7 @@
     <div class="pillar"><b>WhatsApp-native</b><span>Click-to-chat, shareable links and QR codes, built in from the start.</span></div>
     <div class="pillar"><b>Prototype before you pay big</b><span>Test your idea with real users before committing to a full build.</span></div>
   </div>
-  <div class="footer"><span>Rate Card 2026–27</span><span>hello@thiri.in · +91 XXXXX XXXXX</span></div>
+  <div class="footer"><span>Rate Card 2026–27</span><span>WhatsApp +91 91589 00361 · +91 99606 43838</span></div>
 </section>
 
 <!-- PAGE 2: PACKAGES -->
@@ -345,32 +352,47 @@
 <section class="page">
   <div class="eyebrow">Selected work</div>
   <h2>What we've built</h2>
-  <p class="lede" style="margin-bottom:5mm">Our own products and client work, from one-page portfolios to full platforms.</p>
+  <p class="lede" style="margin-bottom:4mm">Our own products, platforms and websites for clients and communities.</p>
 
-  <div class="work-grid">
-    <div class="work">
-      <div class="kind">Our product · Directory platform</div>
+  <div class="work-grid three">
+    <div class="work span2">
+      <div class="kind">Our product · Pet care app + provider platform</div>
       <h3>Pippy Pets</h3>
-      <p>A mobile-first pet-care app and directory of vets, groomers and pet services, with an AI check that keeps every provider correctly categorised.</p>
-      <div class="chips"><span class="chip">React</span><span class="chip">Supabase</span><span class="chip">AI verification</span><span class="chip">Custom domain + email</span></div>
+      <p>A pet-care app and directory of vets, groomers and boarders in Pune. Its provider platform lets boarders and groomers claim their listing, keep their customer book, log each stay and send owners photo updates.</p>
+      <div class="chips"><span class="chip">pippypets.com</span><span class="chip">pippypets.com/business</span></div>
     </div>
     <div class="work">
-      <div class="kind">Our product · Community web app</div>
+      <div class="kind">Our product · Neighbourhood</div>
       <h3>Apna Aangan</h3>
-      <p>A neighbourhood marketplace where local providers list their services and residents find them. Separate views for residents, providers and admins, with privacy built into the database.</p>
-      <div class="chips"><span class="chip">Next.js</span><span class="chip">Role-based access</span><span class="chip">QR + share links</span><span class="chip">Brand system</span></div>
+      <p>A neighbourhood marketplace with separate views for residents, providers and admins.</p>
+      <div class="chips"><span class="chip">apnaaangan.com</span></div>
     </div>
-    <div class="work">
-      <div class="kind">Two-sided platform</div>
+    <div class="work span2">
+      <div class="kind">Platform · Hiring + AI</div>
       <h3>Nayi Disha</h3>
-      <p>A WhatsApp-first hiring platform that connects frontline workers in retail and banking with employers, including QR-code partner referrals.</p>
-      <div class="chips"><span class="chip">WhatsApp-first</span><span class="chip">Employer + applicant flows</span><span class="chip">Referral payouts</span></div>
+      <p>A WhatsApp-first hiring platform for frontline workers. Its AI training agent runs simulated applicants through onboarding and a second agent scores each run, tuning the journey to a shortlist in under 4 minutes.</p>
+      <div class="chips"><span class="chip">Demo on request</span></div>
     </div>
     <div class="work">
-      <div class="kind">Starter website</div>
-      <h3>Artist portfolio</h3>
-      <p>A clean portfolio site on Wix for a working artist to show their work and take enquiries, quick to launch and easy for the artist to update.</p>
-      <div class="chips"><span class="chip">Wix</span><span class="chip">Portfolio</span><span class="chip">Enquiry form</span></div>
+      <div class="kind">Client · Club house</div>
+      <h3>Peeds Park</h3>
+      <p>Facilities, gallery, reviews and enquiries for a club house in Kerala.</p>
+      <div class="chips"><span class="chip">peedspark.com</span></div>
+    </div>
+    <div class="work">
+      <div class="kind">Community · Festival</div>
+      <h3>Gulmohar Utsav</h3>
+      <p>A society Ganeshotsav site with the programme, volunteer sign-ups and registrations.</p>
+    </div>
+    <div class="work">
+      <div class="kind">Community · Reunion</div>
+      <h3>Batch Reunion</h3>
+      <p>A scrolling-story invitation with an alumni-only registration area.</p>
+    </div>
+    <div class="work">
+      <div class="kind">Client · Artist</div>
+      <h3>Sonal's Art Studio</h3>
+      <p>A Wix portfolio for a charcoal artist, with commission enquiries.</p>
     </div>
   </div>
 
@@ -389,10 +411,9 @@
       <h3>Let's talk about your idea</h3>
       <p>Book a free 30-minute call. We'll suggest the right package, with no obligation.</p>
     </div>
-    <div class="details">
-      <b>hello@thiri.in</b><br>
-      +91 XXXXX XXXXX (WhatsApp)<br>
-      thiri.in
+    <div class="details two">
+      <div><b>Teena Anie Emmanuel</b><br>WhatsApp +91 91589 00361<br>teena.anie9@gmail.com</div>
+      <div><b>Tincy Maria Emmanuel</b><br>WhatsApp +91 99606 43838<br>tincy@outlook.com</div>
     </div>
   </div>
 
