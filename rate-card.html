@@ -97,6 +97,12 @@
   .pkg .eg { margin-top: auto; padding-top: 2mm; font-size: 7.8pt; color: var(--muted); border-top: 1px dashed var(--line); }
   .pkg .eg b { color: var(--ink); font-weight: 600; }
 
+  .pkg-grid.three { grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+  .group-label { font-family: "Fraunces", serif; font-size: 12pt; font-weight: 600; margin-bottom: 2.5mm; padding-bottom: 1.5mm; border-bottom: 1px solid var(--line); }
+  .pkg h3 { font-size: 12.5pt; }
+  .pkg ul li { margin-bottom: 0.9mm; }
+  tr.hl td { background: var(--accent-soft); }
+  tr.hl td:first-child { font-weight: 600; }
   /* Tables */
   table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 3mm; overflow: hidden; border: 1px solid var(--line); }
   th { text-align: left; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 2.6mm 4mm; background: #f5efe5; }
@@ -166,95 +172,98 @@
 <section class="page">
   <div class="eyebrow">Packages</div>
   <h2>Pick where you're starting</h2>
-  <p class="lede" style="margin-bottom:5mm">Every package includes mobile-friendly design, a free 30-minute discovery call, two rounds of revisions per stage, and a launch walkthrough.</p>
+  <p class="lede" style="margin-bottom:5mm">Every package is mobile-friendly and starts with a free 30-minute discovery call. WhatsApp button, Google Maps and social links are always included.</p>
 
-  <div class="pkg-grid">
+  <div class="group-label">Websites</div>
+  <div class="pkg-grid three">
     <div class="pkg">
-      <span class="tag">Validate an idea</span>
-      <h3>Clickable Prototype</h3>
-      <div class="for">For founders who want to test an idea with real users before building it.</div>
-      <div class="price"><small>Starting at</small>₹15,000</div>
-      <div class="meta">About 1 week</div>
+      <h3>Starter</h3>
+      <div class="for">One-page website for individuals, freelancers and home businesses</div>
+      <div class="price"><small>Price</small>₹7,999</div>
       <ul>
-        <li>Clickable, shareable demo that works on a phone</li>
-        <li>Key screens and user journeys</li>
-        <li>Feedback questions and a WhatsApp message kit for testing</li>
+        <li>1 custom-designed page</li>
+        <li>Mobile-friendly</li>
+        <li>WhatsApp button and contact details</li>
+        <li>Basic SEO setup</li>
+        <li>1 revision round</li>
       </ul>
-      <div class="eg">Like our <b>Society Entrepreneur</b> directory prototype</div>
+      <div class="eg">Like our <b>artist portfolio</b> site</div>
     </div>
-
-    <div class="pkg">
-      <span class="tag">Get online</span>
-      <h3>Starter Website</h3>
-      <div class="for">For artists, freelancers, tutors and home businesses.</div>
-      <div class="price"><small>Starting at</small>₹12,000</div>
-      <div class="meta">1–3 pages · 5–7 days · Wix, Framer or custom</div>
-      <ul>
-        <li>Portfolio, about and contact pages</li>
-        <li>WhatsApp button and enquiry form</li>
-        <li>Basic SEO and Google Business Profile setup</li>
-      </ul>
-      <div class="eg">Like our <b>artist portfolio</b> site on Wix</div>
-    </div>
-
-    <div class="pkg">
-      <span class="tag">Grow</span>
-      <h3>Business Website</h3>
-      <div class="for">For clinics, shops, studios and service businesses.</div>
-      <div class="price"><small>Starting at</small>₹35,000</div>
-      <div class="meta">5–8 pages · 2–3 weeks · custom design</div>
-      <ul>
-        <li>Custom design matched to your brand</li>
-        <li>Service pages, gallery, enquiry forms, Google Maps</li>
-        <li>SEO setup, analytics and speed optimisation</li>
-      </ul>
-      <div class="eg">Ideal next step after a Starter site</div>
-    </div>
-
     <div class="pkg featured">
-      <span class="tag">Most requested</span>
-      <h3>Directory & Listing Platform</h3>
-      <div class="for">For marketplaces, local directories and listing businesses.</div>
-      <div class="price"><small>Starting at</small>₹80,000</div>
-      <div class="meta">4–6 weeks · database-backed</div>
+      <span class="tag">Most popular</span>
+      <h3>Business</h3>
+      <div class="for">Up to 5 pages for growing businesses and service providers</div>
+      <div class="price"><small>Price</small>₹14,999</div>
       <ul>
-        <li>Searchable listings with filters and profile pages</li>
-        <li>Admin panel to add, approve and edit listings</li>
-        <li>Custom domain, professional email and secure database</li>
+        <li>Up to 5 pages</li>
+        <li>Enquiry form</li>
+        <li>Google Maps</li>
+        <li>WhatsApp and social links</li>
+        <li>Basic SEO setup</li>
+        <li>2 revision rounds</li>
       </ul>
-      <div class="eg">Like <b>Pippy Pets</b>, our pet-care directory</div>
+      <div class="eg">Clinics, shops, tutors, studios</div>
     </div>
-
     <div class="pkg">
-      <span class="tag">Build a community</span>
-      <h3>Community Web App</h3>
-      <div class="for">For platforms with logins and different kinds of users.</div>
-      <div class="price"><small>Starting at</small>₹1,50,000</div>
-      <div class="meta">6–10 weeks · custom quote after discovery call</div>
+      <h3>Professional</h3>
+      <div class="for">Up to 10 pages for established businesses, schools and organisations</div>
+      <div class="price"><small>Price</small>₹24,999</div>
       <ul>
-        <li>Separate views for customers, providers and admins</li>
-        <li>Sign-up, onboarding, enquiries and lead inbox</li>
-        <li>Full brand system, QR and share links</li>
+        <li>Up to 10 pages</li>
+        <li>Gallery or portfolio</li>
+        <li>Blog or news section</li>
+        <li>Edit your own content</li>
+        <li>Analytics</li>
+        <li>2 revision rounds</li>
       </ul>
-      <div class="eg">Like <b>Apna Aangan</b>, our neighbourhood marketplace</div>
-    </div>
-
-    <div class="pkg">
-      <span class="tag">Scale</span>
-      <h3>Two-Sided Platform</h3>
-      <div class="for">For hiring, booking or matching platforms with two user groups.</div>
-      <div class="price"><small>Starting at</small>₹3,00,000</div>
-      <div class="meta">8–14 weeks · custom quote after discovery call</div>
-      <ul>
-        <li>Onboarding journeys for both sides</li>
-        <li>Matching, applications and status tracking</li>
-        <li>Dashboards, notifications and referral flows</li>
-      </ul>
-      <div class="eg">Like <b>Nayi Disha</b>, our frontline hiring platform</div>
+      <div class="eg">Schools, NGOs, larger businesses</div>
     </div>
   </div>
 
-  <div class="footer"><span>All prices exclude GST and third-party running costs</span><span>2</span></div>
+  <div class="group-label" style="margin-top:6mm">Apps &amp; platforms</div>
+  <div class="pkg-grid three">
+    <div class="pkg">
+      <span class="tag">Validate an idea</span>
+      <h3>Clickable Prototype</h3>
+      <div class="for">Test your idea with real users before building it</div>
+      <div class="price"><small>Price</small>₹14,999</div>
+      <ul>
+        <li>Clickable demo that works on a phone</li>
+        <li>Key screens and user journeys</li>
+        <li>Feedback kit for WhatsApp testing</li>
+        <li>About 1 week</li>
+      </ul>
+      <div class="eg">Like our <b>Society Entrepreneur</b> prototype</div>
+    </div>
+    <div class="pkg">
+      <h3>Directory / Dynamic Website</h3>
+      <div class="for">For listings, logins and data you manage yourself</div>
+      <div class="price"><small>Starting at</small>₹49,999</div>
+      <ul>
+        <li>Database-backed pages</li>
+        <li>User login and registration</li>
+        <li>Admin dashboard</li>
+        <li>Search and filters</li>
+        <li>Reports</li>
+      </ul>
+      <div class="eg">Like <b>Pippy Pets</b>, our pet-care directory</div>
+    </div>
+    <div class="pkg">
+      <h3>Custom Web App / Platform</h3>
+      <div class="for">For complex workflows and multiple kinds of users</div>
+      <div class="price"><small>Starting at</small>₹99,999</div>
+      <ul>
+        <li>Multiple user roles</li>
+        <li>Custom dashboards</li>
+        <li>Third-party integrations</li>
+        <li>Built to scale</li>
+        <li>Custom quote after discovery call</li>
+      </ul>
+      <div class="eg">Like <b>Apna Aangan</b> and <b>Nayi Disha</b></div>
+    </div>
+  </div>
+
+  <div class="footer"><span>All prices in ₹, exclusive of GST and third-party running costs</span><span>2</span></div>
 </section>
 
 <!-- PAGE 3: ADD-ONS + CARE PLANS -->
@@ -265,74 +274,71 @@
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;align-items:start">
     <table>
-    <tr><th>Add-on</th><th class="amt">From</th></tr>
-      <tr><td>Logo and brand guidelines<span class="note">Logo, colours, fonts and tone of voice</span></td><td class="amt">₹15,000</td></tr>
-      <tr><td>Hindi or regional language version<span class="note">Per language</span></td><td class="amt">₹10,000</td></tr>
-      <tr><td>Online payments<span class="note">Razorpay, Cashfree or UPI checkout</span></td><td class="amt">₹10,000</td></tr>
-      <tr><td>Booking or appointment system</td><td class="amt">₹15,000</td></tr>
-      <tr><td>Admin dashboard</td><td class="amt">₹25,000</td></tr>
-      <tr><td>AI features<span class="note">Smart search, chat assistant, automatic tagging of listings</span></td><td class="amt">₹25,000</td></tr>
+      <tr><th>Add-on</th><th class="amt">From</th></tr>
+      <tr class="hl"><td>Brand &amp; logo design by Tamanna<span class="note">Logo, colours, fonts and brand guidelines</span></td><td class="amt">₹9,999</td></tr>
+      <tr><td>Payment gateway<span class="note">Razorpay or UPI checkout</span></td><td class="amt">₹5,000</td></tr>
+      <tr><td>Appointment booking</td><td class="amt">₹5,000</td></tr>
+      <tr><td>Customer login / registration</td><td class="amt">₹4,000</td></tr>
     </table>
     <table>
-    <tr><th>Add-on</th><th class="amt">From</th></tr>
-      <tr><td>WhatsApp integration<span class="note">Click-to-chat, order and enquiry alerts</span></td><td class="amt">₹5,000</td></tr>
-      <tr><td>SEO setup<span class="note">Keywords, metadata, Google Search Console</span></td><td class="amt">₹8,000</td></tr>
-      <tr><td>Copywriting</td><td class="amt">₹1,500 / page</td></tr>
-      <tr><td>Extra page</td><td class="amt">₹2,500 / page</td></tr>
-      <tr><td>Domain and professional email setup</td><td class="amt">₹3,000</td></tr>
+      <tr><th>Add-on</th><th class="amt">From</th></tr>
+      <tr><td>Admin dashboard</td><td class="amt">₹8,000</td></tr>
+      <tr><td>Regional language version<span class="note">Per language</span></td><td class="amt">₹6,000</td></tr>
+      <tr><td>AI features<span class="note">Smart search, chat assistant</span></td><td class="amt">₹15,000</td></tr>
+      <tr><td>Extra page</td><td class="amt">₹1,200</td></tr>
     </table>
   </div>
 
   <div class="section-gap"></div>
   <div class="eyebrow">Yearly care plans</div>
   <h2 style="font-size:18pt">Keep it running, without the worry</h2>
-  <p class="lede" style="margin-bottom:4.5mm">One simple yearly fee. Every new build comes with <b>3 months of care free</b>.</p>
+  <p class="lede" style="margin-bottom:4.5mm">Every build includes <b>30 days of free bug fixes</b> after launch. After that, pick a simple yearly plan.</p>
 
   <div class="care-grid">
     <div class="care">
       <h3>Essential Care</h3>
       <div class="for">For Starter websites</div>
-      <div class="price">₹9,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
-      <div class="permo">Works out to ₹833 a month</div>
+      <div class="price">₹4,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">Works out to ₹417 a month</div>
       <ul>
-        <li>Hosting and uptime monitoring</li>
-        <li>Monthly backups</li>
+        <li>Hosting and uptime checks</li>
+        <li>Backups</li>
         <li>Security and SSL checks</li>
-        <li>Up to 12 small edits a year</li>
+        <li>Small text and image updates</li>
         <li>Domain renewal reminders</li>
       </ul>
     </div>
     <div class="care featured">
       <h3>Business Care</h3>
-      <div class="for">For Business websites</div>
-      <div class="price">₹19,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
-      <div class="permo">Works out to ₹1,667 a month</div>
+      <div class="for">For Business and Professional websites</div>
+      <div class="price">₹9,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">Works out to ₹833 a month</div>
       <ul>
         <li>Everything in Essential</li>
-        <li>Up to 30 edits a year</li>
-        <li>Quarterly SEO and speed check</li>
-        <li>Quarterly analytics report</li>
-        <li>Replies within 48 hours</li>
+        <li>Regular content updates</li>
+        <li>SEO and speed checks</li>
+        <li>Analytics report</li>
+        <li>Priority replies</li>
       </ul>
     </div>
     <div class="care">
       <h3>Platform Care</h3>
       <div class="for">For directories and web apps</div>
-      <div class="price">₹49,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
-      <div class="permo">Works out to ₹4,167 a month</div>
+      <div class="price">₹24,999<span style="font-size:9pt;font-family:'DM Sans';font-weight:500"> / year</span></div>
+      <div class="permo">or ₹2,500 a month</div>
       <ul>
         <li>Database backups and monitoring</li>
         <li>Bug fixes and security updates</li>
-        <li>3 hours of changes every month</li>
-        <li>Replies within 24 hours</li>
-        <li>Quarterly product review call</li>
+        <li>Small feature changes</li>
+        <li>Faster replies</li>
+        <li>Quarterly review call</li>
       </ul>
     </div>
   </div>
 
-  <div class="callout">Need more than that? Extra work is charged at <b>₹1,200 an hour</b>. For ongoing feature development, ask about a <b>Product Partner</b> retainer.</div>
+  <div class="callout">Need something outside your plan? Extra work is charged at <b>₹800 an hour</b>.</div>
 
-  <div class="footer"><span>All prices exclude GST and third-party running costs</span><span>3</span></div>
+  <div class="footer"><span>All prices in ₹, exclusive of GST and third-party running costs</span><span>3</span></div>
 </section>
 
 <!-- PAGE 4: WORK + TERMS -->
@@ -370,12 +376,12 @@
 
   <div class="eyebrow">How we work</div>
   <div class="terms">
-    <div><b>Payment</b>50% to start, 30% on design approval, 20% before launch. Larger platforms are billed by milestone.</div>
-    <div><b>Revisions</b>Two rounds per stage included. Further changes are billed at ₹1,200 an hour.</div>
-    <div><b>Running costs</b>Domain, hosting, database and app-store fees are paid by you, at actual cost. We'll help you set them up.</div>
+    <div><b>Payment</b>50% advance to start, 30% after design approval, 20% before launch.</div>
+    <div><b>Revisions</b>As listed in each package. Further changes are billed at ₹800 an hour.</div>
+    <div><b>Running costs</b>Domain at actual cost + ₹300 setup. Hosting, payment gateway, SMS and email services are charged at actual cost.</div>
+    <div><b>After launch</b>30 days of free bug fixes for the agreed scope, then an optional yearly care plan.</div>
     <div><b>Ownership</b>You own your website, code and content once the final payment is made.</div>
-    <div><b>GST</b>Prices exclude GST, which is added as applicable.</div>
-    <div><b>Quotes</b>Valid for 30 days. Final pricing is confirmed after the discovery call.</div>
+    <div><b>GST &amp; quotes</b>Prices exclude GST. Final price depends on scope and is confirmed after the discovery call.</div>
   </div>
 
   <div class="contact">
