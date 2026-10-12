@@ -247,6 +247,13 @@
     .stack { border-radius: 22px 22px 0 0; }
   }
 
+
+  /* Mini diya in the top bar */
+  .logo .nav-diya { width: 34px; height: 28px; overflow: visible; }
+  .nav-diya .nav-flame { transform-box: view-box; transform-origin: 24px 21px; animation: flicker 2.4s ease-in-out infinite; filter: drop-shadow(0 0 4px rgba(255,170,80,.8)); }
+  .nav-diya .nav-glow { transform-box: fill-box; transform-origin: center; animation: halo 3.2s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .nav-diya .nav-flame, .nav-diya .nav-glow { animation: none; } }
+
   /* Reveal on scroll */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -283,7 +290,22 @@
 <nav class="nav">
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Thiri home">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c4 6 8 9.5 8 15a8 8 0 0 1-16 0c0-4 2.5-6.5 4-9 .8 2.6 2 4 3.5 4.5C15 10 15 6.5 16 3z" fill="#d9692b"/></svg>
+      <svg class="nav-diya" viewBox="0 0 48 40" aria-hidden="true">
+        <defs>
+          <radialGradient id="navGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffb35c" stop-opacity=".55"/><stop offset="100%" stop-color="#ffb35c" stop-opacity="0"/></radialGradient>
+          <linearGradient id="navFlame" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff9a3d" stop-opacity=".2"/><stop offset="45%" stop-color="#ffb347"/><stop offset="100%" stop-color="#ff7a1a"/></linearGradient>
+          <linearGradient id="navClay" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8743a"/><stop offset="100%" stop-color="#7a3416"/></linearGradient>
+        </defs>
+        <circle class="nav-glow" cx="24" cy="14" r="14" fill="url(#navGlow)"/>
+        <g class="nav-flame">
+          <path d="M24 2 C 27 8, 30 11, 29.5 15.5 C 29 19, 27 21, 24 21 C 21 21, 19 19, 18.5 15.5 C 18 11, 21 8, 24 2 Z" fill="url(#navFlame)"/>
+          <path d="M24 9 C 25.6 12.5, 26.8 14.5, 26.4 17 C 26 19, 25 20, 24 20 C 23 20, 22 19, 21.6 17 C 21.2 14.5, 22.4 12.5, 24 9 Z" fill="#fff1c2"/>
+        </g>
+        <path d="M24 20.5 v3.5" stroke="#2a1a12" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M8 25 C 11 37, 37 37, 40 25 Z" fill="url(#navClay)"/>
+        <ellipse cx="24" cy="25" rx="16" ry="2.6" fill="#e3894f"/>
+        <ellipse cx="24" cy="25" rx="13" ry="1.4" fill="#2b170d"/>
+      </svg>
       Thiri
     </a>
     <div class="nav-links">
@@ -470,12 +492,12 @@
         <div class="banner b-pippy"><span class="glyph">P</span><span class="kind">Our product · Pet care</span></div>
         <div class="body">
           <h3>Pippy Pets</h3>
-          <p>A pet-care app for pet parents, with a directory of vets, groomers, boarders and trainers in Pune. An AI check keeps every listing correctly categorised.</p>
+          <p>A pet-care app that takes the paperwork out of keeping health records. Pet parents can simply say their pet's history out loud, or snap a prescription or lab report and let AI read it into the record, including medicines, weights and questions to ask the vet. A searchable directory helps them find vets, groomers, boarders and trainers in Pune.</p>
           <p><b>For businesses:</b> a separate provider platform where boarders and groomers claim their listing and keep their customer book on their phone. They track stays and daily logs, receive each pet's food and medication details before it arrives, and send owners photo updates during a stay.</p>
-          <div class="chips"><span class="chip">Pet parent app</span><span class="chip">Provider platform</span><span class="chip">AI verification</span><span class="chip">Email sign-in</span></div>
+          <div class="chips"><span class="chip">Speak to add records</span><span class="chip">AI document scan</span><span class="chip">Easy health records</span><span class="chip">Search vets &amp; groomers</span><span class="chip">Business platform</span></div>
           <div class="links">
             <a class="link" href="https://pippypets.com" target="_blank" rel="noopener">pippypets.com →</a>
-            <a class="link" href="https://pippypets.com/business" target="_blank" rel="noopener">Provider platform →</a>
+            <a class="link" href="https://pippypets.com/business" target="_blank" rel="noopener">For businesses →</a>
           </div>
         </div>
       </article>
@@ -483,18 +505,18 @@
         <div class="banner b-aangan"><span class="glyph">A</span><span class="kind">Our product · Neighbourhood</span></div>
         <div class="body">
           <h3>Apna Aangan</h3>
-          <p>A neighbourhood marketplace where local providers list their services and residents find them. Separate views for residents, providers and admins, with phone numbers kept private at the database level.</p>
-          <div class="chips"><span class="chip">Next.js</span><span class="chip">Role-based access</span><span class="chip">QR + share links</span></div>
+          <p>A neighbourhood marketplace where local providers list their services and residents find them. Separate views for residents, providers and admins, and providers' phone numbers are never shown to strangers.</p>
+          <div class="chips"><span class="chip">Search local services</span><span class="chip">Views for residents &amp; providers</span><span class="chip">Share by QR &amp; WhatsApp</span><span class="chip">Phone numbers kept private</span></div>
           <div class="links"><a class="link" href="https://apnaaangan.com" target="_blank" rel="noopener">apnaaangan.com →</a></div>
         </div>
       </article>
       <article class="work reveal">
-        <div class="banner b-disha"><span class="glyph">N</span><span class="kind">Platform · Hiring + AI</span></div>
+        <div class="banner b-disha"><span class="glyph">N</span><span class="kind">Platform · Hiring + AI training</span></div>
         <div class="body">
           <h3>Nayi Disha</h3>
           <p>A WhatsApp-first hiring platform connecting frontline workers in retail and banking with employers.</p>
-          <p><b>AI training agent:</b> one AI agent runs simulated applicants through the WhatsApp onboarding, and a second scores every run on speed and accuracy. Together they tune the journey until a worker reaches a shortlist in under 4 minutes.</p>
-          <div class="chips"><span class="chip">WhatsApp-first</span><span class="chip">AI agents</span><span class="chip">Referral payouts</span></div>
+          <p><b>AI training simulation:</b> staff practise real conversations, such as a customer asking about an education loan, with an AI customer that responds like a real person. A separate AI evaluator scores the conversation, and a coach points out what went well and what to try differently, then sets up a focused retry.</p>
+          <div class="chips"><span class="chip">Apply on WhatsApp</span><span class="chip">AI role-play practice</span><span class="chip">Feedback &amp; coaching</span><span class="chip">Referral rewards</span></div>
           <div class="links"><span class="link muted">Demo available on request</span></div>
         </div>
       </article>
