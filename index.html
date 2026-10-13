@@ -119,10 +119,6 @@
   .work { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
   .work .banner { height: 150px; position: relative; display: flex; align-items: flex-end; padding: 22px 26px; color: #fff; }
   .work .banner .kind { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: .9; }
-  .b-pippy { background: #d9692b; }
-  .b-aangan { background: #2f6b51; }
-  .b-disha { background: #2c3a66; }
-  .b-artist { background: #6e4570; }
   .work .banner .glyph { position: absolute; right: 24px; top: 20px; font-family: "Fraunces", serif; font-size: 72px; font-weight: 700; opacity: .18; line-height: 1; }
   .work .body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
   .work h3 { font-size: 26px; margin-bottom: 8px; }
@@ -205,6 +201,10 @@
   .work.small .banner { height: auto; aspect-ratio: 16 / 9; padding: 16px 20px; }
   .work.small .banner .glyph { font-size: 56px; right: 18px; top: 14px; }
   .work .shot { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #e9e2d6; border-bottom: 1px solid var(--line); }
+  .shot-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+  .shot-pair .shot { border-bottom: 0; }
+  .work:not(.small) .shot { aspect-ratio: 16 / 8.5; }
+  @media (max-width: 640px) { .shot-pair { grid-template-columns: 1fr; } }
   .work .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform .5s ease; }
   .work:hover .shot img { transform: scale(1.03); }
   .work .shot .kind { position: absolute; left: 14px; bottom: 12px; background: rgba(17, 14, 22, 0.78); color: #fff; padding: 4px 11px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -213,7 +213,6 @@
   .work.small p { font-size: 14.5px; }
   .work .body p b { color: var(--ink); }
   .links { margin-top: auto; display: flex; gap: 18px; flex-wrap: wrap; }
-  .b-reunion { background: #4a4e5a; }
 
   /* Contact people */
   .people { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); gap: 20px; justify-content: center; }
@@ -501,7 +500,7 @@
     <div class="group-title reveal">Products &amp; platforms</div>
     <div class="work-grid">
       <article class="work wide reveal">
-        <div class="banner b-pippy"><span class="glyph">P</span><span class="kind">Our product</span></div>
+        <div class="shot-pair"><div class="shot"><img src="img/pippy-app.jpg" alt="Pippy pet-care app home page" width="960" height="438" loading="lazy"><span class="kind">Pet parent app</span></div><div class="shot"><img src="img/pippy-business.jpg" alt="Pippy for business home page for boarders and groomers" width="960" height="450" loading="lazy"><span class="kind">For businesses</span></div></div>
         <div class="body">
           <h3>Pippy Pets</h3>
           <p>A pet-care app that takes the paperwork out of health records. Pet parents can say their pet's history out loud, or snap a prescription and let AI read it into the record, down to medicine doses and weight readings. A searchable directory helps them find vets and groomers in Pune.</p>
@@ -514,16 +513,16 @@
         </div>
       </article>
       <article class="work reveal">
-        <div class="banner b-aangan"><span class="glyph">A</span><span class="kind">Our product</span></div>
+        <div class="shot"><img src="img/apna-aangan.jpg" alt="Apna Aangan neighbourhood directory with search and categories" width="960" height="525" loading="lazy"><span class="kind">Our product</span></div>
         <div class="body">
           <h3>Apna Aangan</h3>
-          <p>A neighbourhood marketplace where local providers list their services and residents find them. Residents and providers each get their own view, and providers\' phone numbers are never shown to strangers.</p>
+          <p>A neighbourhood marketplace where local providers list their services and residents find them. Residents and providers each get their own view, and providers' phone numbers are never shown to strangers.</p>
           <div class="chips"><span class="chip">Search local services</span><span class="chip">Views for residents &amp; providers</span><span class="chip">Share by QR &amp; WhatsApp</span><span class="chip">Phone numbers kept private</span></div>
           <div class="links"><a class="link" href="https://apnaaangan.com" target="_blank" rel="noopener">apnaaangan.com →</a></div>
         </div>
       </article>
       <article class="work reveal">
-        <div class="banner b-disha"><span class="glyph">N</span><span class="kind">Hiring platform</span></div>
+        <div class="shot"><img src="img/nayi-disha.jpg" alt="Nayi Disha job seeker page with a WhatsApp-style chat" width="960" height="540" loading="lazy"><span class="kind">Hiring platform</span></div>
         <div class="body">
           <h3>Nayi Disha</h3>
           <p>A WhatsApp-first hiring platform connecting frontline workers in retail and banking with employers.</p>
@@ -537,7 +536,7 @@
     <div class="group-title reveal" style="margin-top:48px">Websites for clients &amp; communities</div>
     <div class="work-grid four">
       <article class="work small reveal">
-        <div class="shot"><img src="img/peeds-park.jpg" alt="Home page of the Peeds Park club house website" width="960" height="447" loading="lazy"><span class="kind">Club house</span></div>
+        <div class="shot"><img src="img/peeds-park.jpg" alt="Home page of the Peeds Park club house website" width="960" height="450" loading="lazy"><span class="kind">Club house</span></div>
         <div class="body">
           <h3>Peeds Park</h3>
           <p>Website for a family club house in Kerala with a pool and a party lawn. Guests can look at each facility and send an enquiry.</p>
@@ -545,7 +544,7 @@
         </div>
       </article>
       <article class="work small reveal">
-        <div class="shot"><img src="img/gulmohar-utsav.jpg" alt="Home page of the Gulmohar Utsav Ganeshotsav website" width="960" height="450" loading="lazy"><span class="kind">Festival</span></div>
+        <div class="shot"><img src="img/gulmohar-utsav.jpg" alt="Home page of the Gulmohar Utsav Ganeshotsav website" width="960" height="447" loading="lazy"><span class="kind">Festival</span></div>
         <div class="body">
           <h3>Gulmohar Utsav</h3>
           <p>A Ganeshotsav site for a housing society. Residents see the five-day programme and sign up to volunteer. The committee runs it from a Google Sheet, and any society can reuse it.</p>
@@ -555,7 +554,7 @@
         </div>
       </article>
       <article class="work small reveal">
-        <div class="banner b-reunion"><span class="glyph">R</span><span class="kind">Reunion</span></div>
+        <div class="shot"><img src="img/batch-reunion.jpg" alt="Batch Reunion invitation home page" width="960" height="480" loading="lazy"><span class="kind">Reunion</span></div>
         <div class="body">
           <h3>Batch Reunion</h3>
           <p>A reunion site with two sides. Alumni register and see the programme, and their contact details stay private. Organisers manage registrations and event details from an admin area. The invitation is a five-chapter scrolling story.</p>
@@ -565,7 +564,7 @@
         </div>
       </article>
       <article class="work small reveal">
-        <div class="banner b-artist"><span class="glyph">S</span><span class="kind">Artist</span></div>
+        <div class="shot"><img src="img/sonal-art-studio.jpg" alt="Sonal's Art Studio home page" width="960" height="480" loading="lazy"><span class="kind">Artist</span></div>
         <div class="body">
           <h3>Sonal's Art Studio</h3>
           <p>A portfolio site for a charcoal artist known for animal portraits, with a way for buyers to enquire about commissions.</p>
